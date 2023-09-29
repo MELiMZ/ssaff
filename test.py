@@ -58,11 +58,6 @@ def testRR(file_path):
             gt_save_name = os.path.join('results/'+satellites[0]+'/RR/gt', '{}.mat'.format(i))
             pan_save_name = os.path.join('results/'+satellites[0]+'/RR/pan', '{}.mat'.format(i))
             ms_save_name = os.path.join('results/'+satellites[0]+'/RR/lrms', '{}.mat'.format(i))
-            
-            sr = sr * 256.
-            x1 = x1 * 256.
-            x2 = x2 * 256.
-            x3 = x3 * 256.
 
             sio.savemat(sr_save_name, {'sr': sr})
             sio.savemat(gt_save_name, {'x3': x3})
@@ -105,10 +100,6 @@ def testFR(file_path):
             sr_save_name = os.path.join('results/'+satellites[0]+'/FR/fushion', '{}.mat'.format(i))
             pan_save_name = os.path.join('results/'+satellites[0]+'/FR/pan', '{}.mat'.format(i))
             ms_save_name = os.path.join('results/'+satellites[0]+'/FR/lrms', '{}.mat'.format(i))
-
-            sr = sr * 256.
-            x1 = x1 * 256.
-            x2 = x2 * 256.
 
             sio.savemat(sr_save_name, {'sr': sr})
             sio.savemat(pan_save_name, {'x2': x2})
