@@ -1,3 +1,4 @@
+# NewData2H5.py can only be used as a reference for creating h5py format datasets and is not applicable to all datasets. Everyone needs to write code for the h5py dataset based on their own data characteristics. Based on the code provided in this paper, you only need to use the code related to LRMS, Pan, and GT, and delete the code related to UPMS and SRGB.
 import h5py, os, glob, cv2, re
 import numpy as np
 def wv3():
@@ -9,9 +10,9 @@ def wv3():
     # 
     #.h5文件名
     t=h5py.File("../data/NewH5Data/WV3/train.h5","w")
-    num_train = 3246    #train图片数目
+    num_train = 3246    #Number of training images
     v=h5py.File("../data/NewH5Data/WV3/valid.h5","w")
-    num_valid = 300    #valid图片数目
+    num_valid = 300    #Number of verify images
 
     t_lrms = t.create_dataset("lrms", (num_train, 8, 64, 64), 'i')
     v_lrms = v.create_dataset("lrms", (num_valid, 8, 64, 64), 'i')
@@ -31,7 +32,7 @@ def wv3():
     t_lrgb = t.create_dataset('lrgb', (num_train, 3, 64, 64), 'i')
     v_lrgb = v.create_dataset('lrgb', (num_valid, 3, 64, 64), 'i')
 
-    img_path_file = '../data/data2017Add/WV3/train/'   # 图片目录
+    img_path_file = '../data/data2017Add/WV3/train/'   
     index_n = 0
     for filename in os.listdir(img_path_file + 'LRMS/' + ms_lists[0]):
         if filename.endswith(".tif"):
@@ -121,9 +122,9 @@ def wv3():
     # Test
 
 
-    #.h5文件名
+    #.h5 filename
     t=h5py.File("../data/NewH5Data/WV3/test.h5","w")
-    num_train = 100    #train图片数目
+    num_train = 100    
 
     t_lrms = t.create_dataset("lrms", (num_train, 8, 64, 64), 'i')
     t_pan = t.create_dataset("pan", (num_train, 1, 256, 256), 'i')
@@ -132,7 +133,7 @@ def wv3():
     t_srgb = t.create_dataset('srgb', (num_train, 3, 256, 256), 'i')
     t_lrgb = t.create_dataset('lrgb', (num_train, 3, 64, 64), 'i')
 
-    img_path_file = '../data/data2017Add/WV3/test/'   # 图片目录
+    img_path_file = '../data/data2017Add/WV3/test/'   # image file path
     index_n = 0
     for filename in os.listdir(img_path_file + 'LRMS/' + ms_lists[0]):
         if filename.endswith(".tif"):
@@ -207,9 +208,9 @@ def wv3():
     # withoutRef
 
 
-    #.h5文件名
+    #.h5 filename
     t=h5py.File("../data/NewH5Data/WV3/withoutRef.h5","w")
-    num_train = 95    #train图片数目
+    num_train = 95    #The number of training image
 
     t_lrms = t.create_dataset("lrms", (num_train, 8, 200, 200), 'i')
     t_pan = t.create_dataset("pan", (num_train, 1, 800, 800), 'i')
@@ -218,7 +219,7 @@ def wv3():
     t_srgb = t.create_dataset('srgb', (num_train, 3, 800, 800), 'i')
     t_lrgb = t.create_dataset('lrgb', (num_train, 3, 200, 200), 'i')
 
-    img_path_file = '../data/data2017Add/WV3/withoutRef/'   # 图片目录
+    img_path_file = '../data/data2017Add/WV3/withoutRef/'   # image path
     index_n = 0
     for filename in os.listdir(img_path_file + 'LRMS/' + ms_lists[0]):
         if filename.endswith(".tif"):
@@ -286,9 +287,9 @@ def pleiades():
 
     #.h5文件名
     t=h5py.File("../data/NewH5Data/Pleiades/train.h5","w")
-    num_train = 5224    #train图片数目
+    num_train = 5224    #The number of train image
     v=h5py.File("../data/NewH5Data/Pleiades/valid.h5","w")
-    num_valid = 500    #valid图片数目
+    num_valid = 500    #The number of valid image
 
     t_lrms = t.create_dataset("lrms", (num_train, 4, 64, 64), 'i')
     v_lrms = v.create_dataset("lrms", (num_valid, 4, 64, 64), 'i')
@@ -308,7 +309,7 @@ def pleiades():
     t_lrgb = t.create_dataset('lrgb', (num_train, 3, 64, 64), 'i')
     v_lrgb = v.create_dataset('lrgb', (num_valid, 3, 64, 64), 'i')
 
-    img_path_file = '../data/data2017Add/Pleiades/train/'   # 图片目录
+    img_path_file = '../data/data2017Add/Pleiades/train/'   # image path
     index_n = 0
     for filename in os.listdir(img_path_file + 'LRMS/' + ms_lists[0]):
         if filename.endswith(".tif"):
@@ -398,9 +399,9 @@ def pleiades():
     # Test
 
     # 
-    #.h5文件名
+    #.h5 filename
     t=h5py.File("../data/NewH5Data/Pleiades/test.h5","w")
-    num_train = 180    #train图片数目
+    num_train = 180    #The number of training images
 
     t_lrms = t.create_dataset("lrms", (num_train, 4, 64, 64), 'i')
     t_pan = t.create_dataset("pan", (num_train, 1, 256, 256), 'i')
@@ -773,7 +774,7 @@ def IKONOS():
     t_srgb = t.create_dataset('srgb', (num_train, 3, 800, 800), 'i')
     t_lrgb = t.create_dataset('lrgb', (num_train, 3, 200, 200), 'i')
 
-    img_path_file = '../data/data2017Add/IKONOS/withoutRef/'   # 图片目录
+    img_path_file = '../data/data2017Add/IKONOS/withoutRef/'  
     index_n = 0
     for filename in os.listdir(img_path_file + 'LRMS/' + ms_lists[0]):
         if filename.endswith(".tif"):
