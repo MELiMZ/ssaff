@@ -12,7 +12,7 @@ class Dataset_Pro(data.Dataset):
         gt = np.array(gt, dtype=np.float32) / 255.     #创建给定元素的数组
         self.gt = torch.from_numpy(gt)      #把数组转换成张量，且二者共享内存
 
-        lrms = data["ms"][...]
+        lrms = data["lrms"][...]
         lrms = np.array(lrms, dtype=np.float32) / 255.
         self.lrms = torch.from_numpy(lrms)
 
